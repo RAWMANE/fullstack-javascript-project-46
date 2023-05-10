@@ -1,14 +1,13 @@
-{
-  "name": "@hexlet/code",
-  "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/RAWMANE/fullstack-javascript-project-46/workflows/hexlet-check/badge.svg)](https://github.com/RAWMANE/fullstack-javascript-project-46/actions)",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "bin": {
-    "code": "bin/gendiff.js"
+
+  {
+    "name": "@hexlet/code",
+    "version": "0.0.1",
+    "description": "Compares two configuration files and shows a difference.",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Roman Romanchuk",
+    "license": "ISC"
   }
-}
