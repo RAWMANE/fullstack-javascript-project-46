@@ -13,6 +13,7 @@
     "author": "Roman Romanchuk",
     "license": "ISC",
     "devDependencies": {
+        "eslint": "^8.40.0",
         "uglify-js": "^3.17.4"
     },
     "dependencies": {
