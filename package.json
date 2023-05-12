@@ -21,6 +21,7 @@
         "uglify-js": "^3.17.4"
     },
     "dependencies": {
-        "gendiff": "^1.0.0"
+        "gendiff": "^1.0.0",
+        "lodash": "^4.17.21"
     }
 }

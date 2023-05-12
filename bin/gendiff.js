@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { program } from 'commander';
 
 program
@@ -9,4 +10,3 @@ program
   .option('-f,--formant <type>', 'output format')
   .name('gendiff')
   .parse();
- 
