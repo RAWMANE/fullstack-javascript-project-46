@@ -1,26 +1,20 @@
 import fs from 'fs';
 import path from 'path';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import _ from 'lodash';
+import buildTree from './treeBuilder.js';
+import format from './formatters/index.js';
+import parse from './parse.js';
 
-const genDiff = (filePath1, filePath2) => {
-  const data1 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath1), 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath2), 'utf-8'));
-  const getKeys = _.union(Object.keys(data1), Object.keys(data2));
-  const sortedKeys = _.sortBy(getKeys);
-  const gens = sortedKeys.map((getKey) => {
-    if (_.has(data1, getKey) && !_.has(data2, getKey)) {
-      const result = `  - ${getKey}: ${data1[getKey]}`;
-      return result;
-    } if (!_.has(data1, getKey) && _.has(data2, getKey)) {
-      const result = `  + ${getKey}: ${data2[getKey]}`;
-      return result;
-    } if (data1[getKey] === data2[getKey]) {
-      const result = `    ${getKey}: ${data1[getKey]}`;
-      return result;
-    }
+const buildFullPath = (filepath) => path.resolve(process.cwd(), filepath);
+const extractFormat = (filepath) => path.extname(filepath).slice(1);
+const getData = (filepath) => parse(fs.readFileSync(filepath, 'utf-8'), extractFormat(filepath));
 
-    return gens;
-  });
-};
+function genDiff(path1, path2, formatName = 'stylish') {
+  const data1 = getData(buildFullPath(path1));
+  const data2 = getData(buildFullPath(path2));
+
+  const tree = buildTree(data1, data2);
+  console.log(tree);
+  return format(tree, formatName);
+}
 export default genDiff;

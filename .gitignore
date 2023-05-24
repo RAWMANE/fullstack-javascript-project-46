@@ -1,4 +1,2 @@
-node_module
-coverage/
- 
-node_modules
+node_modules/
+coverage/ 
